@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TruthOrDare"
         mc:Ignorable="d"
-        Background="LightCyan"
+        Background="Honeydew"
         Title="MainWindow" Height="450" Width="800">
     <Canvas>
         <Button Click="TruthClick" x:Name="Truth" FontSize="45" Width="160" Background="LimeGreen" Canvas.Left="173" Canvas.Top="248" Height="75">Truth</Button>
         <Button Click="DareClick" x:Name="Dare" FontSize="45" Width="160" Background="Red" Canvas.Left="457" Canvas.Top="247" Height="76">Dare</Button>
         <Rectangle Fill="PeachPuff" Opacity="0.6" RadiusX="30" RadiusY="30" Width="444" Height="208" Canvas.Left="173" Canvas.Top="10"></Rectangle>
         <TextBlock x:Name="mainText" TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" Canvas.Left="190" Canvas.Top="19" Height="189" Width="412">Lorem Ipsum Dolor</TextBlock>
-        
+
         <Rectangle Fill="Aqua" Opacity="0.45" Width="72" Height="70" RadiusX="100" RadiusY="100" Canvas.Left="361" Canvas.Top="317"></Rectangle>
         <Rectangle Fill="White" Width="66" Height="63" RadiusX="100" RadiusY="100" Canvas.Left="363" Canvas.Top="320"></Rectangle>
-        <Label x:Name="Timer" FontSize="28" Canvas.Left="378" Canvas.Top="327">00</Label>
+        <Label Foreground="Gray" x:Name="Timer" FontSize="28" Canvas.Left="377" Canvas.Top="326">00</Label>
     </Canvas>
 </Window>
