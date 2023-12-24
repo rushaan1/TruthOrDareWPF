@@ -159,6 +159,18 @@ namespace TruthOrDare
             );
         }
 
+        private void DayMode(object sender, RoutedEventArgs e) 
+        {
+            bgimg.Visibility = System.Windows.Visibility.Hidden;
+            Canvas.SetTop(snowOverlay, 183);
+        }
+
+        private void NightMode(object sender, RoutedEventArgs e)
+        {
+            bgimg.Visibility = System.Windows.Visibility.Visible;
+            Canvas.SetTop(snowOverlay, 225);
+        }
+
         private void checkedd(object sender, RoutedEventArgs e)
         {
             if ((sender as CheckBox).Name == "autoplay") 

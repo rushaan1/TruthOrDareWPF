@@ -53,6 +53,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="XamlAnimatedGif, Version=2.0.0.0, Culture=neutral, PublicKeyToken=20a987d8023d9690, processorArchitecture=MSIL">
+      <HintPath>..\packages\XamlAnimatedGif.2.2.0\lib\net45\XamlAnimatedGif.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -101,6 +104,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\audioicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bluebgimg.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\dark-mode.png" />
+    <Resource Include="Images\sunicon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

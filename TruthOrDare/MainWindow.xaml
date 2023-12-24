@@ -3,18 +3,26 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
         xmlns:local="clr-namespace:TruthOrDare"
         mc:Ignorable="d"
         Background="Honeydew"
         Title="MainWindow" Height="450" Width="800">
     <Canvas>
+        <Canvas.Background>
+            <VisualBrush>
+                <VisualBrush.Visual>
+                    <Image x:Name="bgimg" Visibility="Hidden" gif:AnimationBehavior.SourceUri="/Images/bluebgimg.gif"/>
+                </VisualBrush.Visual>
+            </VisualBrush>
+        </Canvas.Background>
         <Button Click="TruthClick" x:Name="Truth" FontSize="45" Width="160" Background="LimeGreen" Canvas.Left="173" Canvas.Top="248" Height="75">Truth</Button>
         <Button Click="DareClick" x:Name="Dare" FontSize="45" Width="160" Background="Red" Canvas.Left="457" Canvas.Top="247" Height="76">Dare</Button>
         <Rectangle Fill="PeachPuff" Opacity="0.6" RadiusX="30" RadiusY="30" Width="444" Height="208" Canvas.Left="173" Canvas.Top="10"></Rectangle>
         <TextBlock x:Name="mainText" TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" Canvas.Left="190" Canvas.Top="19" Height="189" Width="412">Truth or Dare?</TextBlock>
 
         <Rectangle Fill="Aqua" Opacity="0.45" Width="72" Height="70" RadiusX="100" RadiusY="100" Canvas.Left="361" Canvas.Top="317"></Rectangle>
-        <Rectangle Fill="White" Width="66" Height="63" RadiusX="100" RadiusY="100" Canvas.Left="363" Canvas.Top="320"></Rectangle>
+        <Rectangle Fill="White" Width="66" Height="63" RadiusX="100" RadiusY="100" Canvas.Left="364" Canvas.Top="320"></Rectangle>
         <Label Foreground="Gray" x:Name="Timer" FontSize="28" Canvas.Left="377" Canvas.Top="326">00</Label>
 
         <Rectangle RadiusX="25" RadiusY="25" Fill="HotPink" Width="138" Height="114" Canvas.Left="646" Canvas.Top="10"></Rectangle>
@@ -44,5 +52,17 @@
             </CheckBox.LayoutTransform>
         </CheckBox>
         <Label FontSize="15" Canvas.Left="50" Canvas.Top="62">Auto-Play</Label>
+
+        <Rectangle RadiusX="10" RadiusY="10" Fill="SkyBlue" Width="30" Height="93" Canvas.Left="10" Canvas.Top="178"></Rectangle>
+
+        <Button Click="DayMode" BorderBrush="SkyBlue" Background="SkyBlue" Canvas.Left="11" Canvas.Top="186">
+            <Image Source="/Images/sunicon.png" Height="29" Width="25"></Image>
+        </Button>
+        <!--<Rectangle Width="20" Height="49" Fill="Snow" Canvas.Left="11" Canvas.Top="181"></Rectangle><!-->
+        <Button Click="NightMode" BorderBrush="SkyBlue" Background="SkyBlue" Canvas.Left="11" Canvas.Top="230">
+            <Image Source="/Images/dark-mode.png" Height="29" Width="25"></Image>
+        </Button>
+        <Rectangle x:Name="snowOverlay" Opacity="0.28" RadiusX="10" RadiusY="10" Fill="Snow" Width="25" Height="37" Canvas.Left="13" Canvas.Top="183"></Rectangle>
+
     </Canvas>
 </Window>
