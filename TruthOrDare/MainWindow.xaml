@@ -7,7 +7,8 @@
         xmlns:local="clr-namespace:TruthOrDare"
         mc:Ignorable="d"
         Background="Honeydew"
-        Title="MainWindow" Height="450" Width="800">
+        Icon="/Images/tordico.ico"
+        Title="Truth or Dare" Height="450" Width="800">
     <Border>
         <Border.Background>
             <VisualBrush>
