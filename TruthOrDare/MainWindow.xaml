@@ -11,10 +11,38 @@
         <Button Click="TruthClick" x:Name="Truth" FontSize="45" Width="160" Background="LimeGreen" Canvas.Left="173" Canvas.Top="248" Height="75">Truth</Button>
         <Button Click="DareClick" x:Name="Dare" FontSize="45" Width="160" Background="Red" Canvas.Left="457" Canvas.Top="247" Height="76">Dare</Button>
         <Rectangle Fill="PeachPuff" Opacity="0.6" RadiusX="30" RadiusY="30" Width="444" Height="208" Canvas.Left="173" Canvas.Top="10"></Rectangle>
-        <TextBlock x:Name="mainText" TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" Canvas.Left="190" Canvas.Top="19" Height="189" Width="412">Lorem Ipsum Dolor</TextBlock>
+        <TextBlock x:Name="mainText" TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" Canvas.Left="190" Canvas.Top="19" Height="189" Width="412">Truth or Dare?</TextBlock>
 
         <Rectangle Fill="Aqua" Opacity="0.45" Width="72" Height="70" RadiusX="100" RadiusY="100" Canvas.Left="361" Canvas.Top="317"></Rectangle>
         <Rectangle Fill="White" Width="66" Height="63" RadiusX="100" RadiusY="100" Canvas.Left="363" Canvas.Top="320"></Rectangle>
         <Label Foreground="Gray" x:Name="Timer" FontSize="28" Canvas.Left="377" Canvas.Top="326">00</Label>
+
+        <Rectangle RadiusX="25" RadiusY="25" Fill="HotPink" Width="138" Height="114" Canvas.Left="646" Canvas.Top="10"></Rectangle>
+        <Rectangle RadiusX="25" RadiusY="25" Fill="Snow" Width="123" Height="45" Canvas.Left="654" Canvas.Top="19"></Rectangle>
+        <Rectangle RadiusX="25" RadiusY="25" Fill="Snow" Width="124" Height="45" Canvas.Left="654" Canvas.Top="69"></Rectangle>
+        <Label FontSize="25" Canvas.Left="715" Canvas.Top="19">18+</Label>
+        <Label FontSize="25" Canvas.Left="715" Canvas.Top="67">13+</Label>
+        <CheckBox Unchecked="uncheckedd" Checked="checkedd" x:Name="m18" Canvas.Left="683" Canvas.Top="29">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+        <CheckBox Unchecked="uncheckedd" Checked="checkedd" x:Name="m13" IsChecked="True" Canvas.Left="683" Canvas.Top="77">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+
+        <Rectangle RadiusX="25" RadiusY="25" Fill="HotPink" Width="130" Height="91" Canvas.Left="10" Canvas.Top="10"></Rectangle>
+        <Rectangle RadiusX="25" RadiusY="25" Fill="Snow" Width="106" Height="80" Canvas.Left="21" Canvas.Top="14"></Rectangle>
+        <Button Click="AudioPlayClick" BorderBrush="Snow" Background="Snow" Width="47" Height="54" Canvas.Left="45" Canvas.Top="14">
+            <Image Source="/Images/audioicon.png"></Image>
+        </Button>
+        <CheckBox Unchecked="uncheckedd" Checked="checkedd" x:Name="autoplay" IsChecked="False" Canvas.Left="30" Canvas.Top="68">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="1.3" ScaleY="1.3" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+        <Label FontSize="15" Canvas.Left="50" Canvas.Top="62">Auto-Play</Label>
     </Canvas>
 </Window>

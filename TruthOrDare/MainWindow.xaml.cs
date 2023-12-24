@@ -15,7 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net;
 using System.IO;
-using Newtonsoft.Json; 
+using Newtonsoft.Json;
+using System.Speech.Synthesis;
 
 namespace TruthOrDare
 {
@@ -26,6 +27,10 @@ namespace TruthOrDare
     {
         public bool isCountDown = false;
         public bool isTimerBlinking = false;
+        public bool _13 = true;
+        public bool _18 = false;
+        public bool autoplayVar = false;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -42,6 +47,59 @@ namespace TruthOrDare
             {
                 return reader.ReadToEnd();
             }
+        }
+
+        public string GetUrl(string url) 
+        {
+            string myUrl = url;
+            Random random = new Random();
+            if (_13 && _18)
+            {
+                int n = random.Next(0, 3);
+                switch (n)
+                {
+                    case 0:
+                        myUrl = url + "?rating=r";
+                        break;
+                    case 1:
+                        myUrl = url + "?rating=pg13";
+                        break;
+                    case 2:
+                        myUrl = url + "?rating=pg";
+                        break;
+                }
+            }
+            else if (_13 == true && _18 == false)
+            {
+                int n = random.Next(0, 2);
+                switch (n)
+                {
+                    case 0:
+                        myUrl = url + "?rating=pg13";
+                        break;
+                    case 1:
+                        myUrl = url + "?rating=pg";
+                        break;
+                }
+            }
+            else if (_13 == false && _18 == true)
+            {
+                int n = random.Next(0, 2);
+                switch (n)
+                {
+                    case 0:
+                        myUrl = url + "?rating=r";
+                        break;
+                    case 1:
+                        myUrl = url + "?rating=pg";
+                        break;
+                }
+            }
+            else 
+            {
+                myUrl = url + "?rating=pg";
+            }
+            return myUrl;
         }
 
         public void BeginCountDown() 
@@ -101,6 +159,57 @@ namespace TruthOrDare
             );
         }
 
+        private void checkedd(object sender, RoutedEventArgs e)
+        {
+            if ((sender as CheckBox).Name == "autoplay") 
+            {
+                autoplayVar = true;
+                return;
+            }
+
+            if ((sender as CheckBox).Name == "m18")
+            {
+                _18 = true;
+            }
+            else if ((sender as CheckBox).Name == "m13") 
+            {
+                _13 = true;
+            }
+        }
+        private void uncheckedd(object sender, RoutedEventArgs e)
+        {
+            if ((sender as CheckBox).Name == "autoplay")
+            {
+                autoplayVar = false;
+                return;
+            }
+
+            if ((sender as CheckBox).Name == "m18")
+            {
+                _18 = false;
+            }
+            else if ((sender as CheckBox).Name == "m13")
+            {
+                _13 = false;
+            }
+        }
+
+        public void PlayTTS(string text) 
+        {
+            Thread thread = new Thread(()=>TTSThread(text));
+            thread.Start();
+        }
+        public void TTSThread(string text) 
+        {
+            SpeechSynthesizer ss = new SpeechSynthesizer();
+            ss.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Adult);
+            ss.Speak(text);
+        }
+        private void AudioPlayClick(object sender, RoutedEventArgs e) 
+        {
+            PlayTTS(mainText.Text);
+        }
+
         private void TruthClick(object sender, RoutedEventArgs e) 
         {
             if (isCountDown) 
@@ -108,7 +217,7 @@ namespace TruthOrDare
                 TimerBlinkRed();
                 return;
             }
-            string content = Get("https://api.truthordarebot.xyz/v1/truth");
+            string content = Get(GetUrl("https://api.truthordarebot.xyz/v1/truth"));
             //string truthText = JsonConvert.DeserializeObject<string>(content);
             JsonTextReader reader = new JsonTextReader(new StringReader(content));
             while (reader.Read()) 
@@ -119,6 +228,10 @@ namespace TruthOrDare
                     {
                         reader.Read();
                         mainText.Text = (string)reader.Value;
+                        if (autoplayVar)
+                        {
+                            PlayTTS(mainText.Text);
+                        }
                         BeginCountDown();
                         break;
                     }
@@ -132,7 +245,7 @@ namespace TruthOrDare
                 TimerBlinkRed();
                 return;
             }
-            string content = Get("https://api.truthordarebot.xyz/v1/dare");
+            string content = Get(GetUrl("https://api.truthordarebot.xyz/v1/dare"));
             //string truthText = JsonConvert.DeserializeObject<string>(content);
             JsonTextReader reader = new JsonTextReader(new StringReader(content));
             while (reader.Read())
@@ -143,6 +256,10 @@ namespace TruthOrDare
                     {
                         reader.Read();
                         mainText.Text = (string)reader.Value;
+                        if (autoplayVar) 
+                        {
+                            PlayTTS(mainText.Text);
+                        }
                         BeginCountDown();
                         break;
                     }
