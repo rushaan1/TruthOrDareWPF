@@ -112,5 +112,8 @@
     <Resource Include="Images\dark-mode.png" />
     <Resource Include="Images\sunicon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\copyicon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

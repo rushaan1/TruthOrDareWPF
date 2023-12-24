@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net;
-using System.IO;
+using System.IO; 
 using Newtonsoft.Json;
 using System.Speech.Synthesis;
 
@@ -23,7 +23,7 @@ namespace TruthOrDare
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window 
     {
         public bool isCountDown = false;
         public bool isTimerBlinking = false;
@@ -34,6 +34,7 @@ namespace TruthOrDare
         public MainWindow()
         {
             InitializeComponent();
+            
         }
         
         public string Get(string uri)
@@ -102,6 +103,26 @@ namespace TruthOrDare
             return myUrl;
         }
 
+        public void CharacterControl() 
+        {
+            if (mainText.FontSize > 30) 
+            {
+                mainText.FontSize = 30;
+            }
+            if (mainText.Text.Length > 160)
+            {
+                mainText.FontSize = 16;
+            }
+            else if (mainText.Text.Length > 61)
+            {
+                mainText.FontSize = 22;
+            }
+            else if (mainText.Text.Length <= 61) 
+            {
+                mainText.FontSize = 30;
+            }
+        }
+
         public void BeginCountDown() 
         {
             Thread thread = new Thread(CountDown);
@@ -157,6 +178,37 @@ namespace TruthOrDare
                 Timer.Foreground = Brushes.Black;
             }
             );
+        }
+
+        public void ShowCopyText() 
+        {
+            if (copied.Visibility == Visibility.Visible) 
+            {
+                return;
+            }
+            Thread thread = new Thread(ShowCopyTextThread);
+            thread.Start();
+        } 
+
+        public void ShowCopyTextThread() 
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                copied.Visibility = Visibility.Visible;
+            }
+            );
+            Thread.Sleep(2000);
+            this.Dispatcher.Invoke(() =>
+            {
+                copied.Visibility = Visibility.Hidden;
+            }
+            ); 
+        }
+
+        private void Copy(object sender, RoutedEventArgs e) 
+        {
+            Clipboard.SetText(mainText.Text);
+            ShowCopyText();
         }
 
         private void DayMode(object sender, RoutedEventArgs e) 
@@ -244,6 +296,7 @@ namespace TruthOrDare
                         {
                             PlayTTS(mainText.Text);
                         }
+                        CharacterControl();
                         BeginCountDown();
                         break;
                     }
@@ -273,6 +326,7 @@ namespace TruthOrDare
                             PlayTTS(mainText.Text);
                         }
                         BeginCountDown();
+                        CharacterControl();
                         break;
                     }
                 }

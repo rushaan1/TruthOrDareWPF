@@ -8,61 +8,79 @@
         mc:Ignorable="d"
         Background="Honeydew"
         Title="MainWindow" Height="450" Width="800">
-    <Canvas>
-        <Canvas.Background>
+    <Border>
+        <Border.Background>
             <VisualBrush>
                 <VisualBrush.Visual>
                     <Image x:Name="bgimg" Visibility="Hidden" gif:AnimationBehavior.SourceUri="/Images/bluebgimg.gif"/>
                 </VisualBrush.Visual>
             </VisualBrush>
-        </Canvas.Background>
-        <Button Click="TruthClick" x:Name="Truth" FontSize="45" Width="160" Background="LimeGreen" Canvas.Left="173" Canvas.Top="248" Height="75">Truth</Button>
-        <Button Click="DareClick" x:Name="Dare" FontSize="45" Width="160" Background="Red" Canvas.Left="457" Canvas.Top="247" Height="76">Dare</Button>
-        <Rectangle Fill="PeachPuff" Opacity="0.6" RadiusX="30" RadiusY="30" Width="444" Height="208" Canvas.Left="173" Canvas.Top="10"></Rectangle>
-        <TextBlock x:Name="mainText" TextWrapping="WrapWithOverflow" TextAlignment="Center" VerticalAlignment="Center" FontSize="22" Canvas.Left="190" Canvas.Top="19" Height="189" Width="412">Truth or Dare?</TextBlock>
+        </Border.Background>
+        <Viewbox>
+            <Canvas Width="800" Height="450">
+                <!--<Canvas.Background>
+                    <VisualBrush>
+                        <VisualBrush.Visual>
+                            <Image x:Name="bgimg" Visibility="Hidden" gif:AnimationBehavior.SourceUri="/Images/bluebgimg.gif"/>
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </Canvas.Background>-->
+                <Button Click="TruthClick" x:Name="Truth" FontSize="45" Width="160" Background="LimeGreen" Canvas.Left="173" Canvas.Top="248" Height="75">Truth</Button>
+                <Button Click="DareClick" x:Name="Dare" FontSize="45" Width="160" Background="Red" Canvas.Left="457" Canvas.Top="247" Height="76">Dare</Button>
+                <Rectangle Fill="PeachPuff" Opacity="0.6" RadiusX="30" RadiusY="30" Width="444" Height="208" Canvas.Left="173" Canvas.Top="10"></Rectangle>
+                
+                
+                <TextBlock x:Name="mainText" Background="Transparent" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" FontSize="35" Canvas.Left="190" Canvas.Top="62" Height="146" Width="412">Truth or Dare?</TextBlock>
+                
+                
+                <Button Click="Copy" BorderBrush="Transparent" Opacity="1" Background="Transparent" Width="50" Height="52" Canvas.Left="626" Canvas.Top="152" >
+                    <Image Source="/Images/copyicon.png"></Image>
+                </Button>
+                <Label Name="copied" Visibility="Hidden" Canvas.Left="624" Canvas.Top="195">Copied!</Label>
+                <Rectangle Fill="Aqua" Opacity="0.45" Width="72" Height="70" RadiusX="100" RadiusY="100" Canvas.Left="361" Canvas.Top="317"></Rectangle>
+                <Rectangle Fill="White" Width="66" Height="63" RadiusX="100" RadiusY="100" Canvas.Left="364" Canvas.Top="320"></Rectangle>
+                <Label Foreground="Gray" x:Name="Timer" FontSize="28" Canvas.Left="377" Canvas.Top="326">00</Label>
 
-        <Rectangle Fill="Aqua" Opacity="0.45" Width="72" Height="70" RadiusX="100" RadiusY="100" Canvas.Left="361" Canvas.Top="317"></Rectangle>
-        <Rectangle Fill="White" Width="66" Height="63" RadiusX="100" RadiusY="100" Canvas.Left="364" Canvas.Top="320"></Rectangle>
-        <Label Foreground="Gray" x:Name="Timer" FontSize="28" Canvas.Left="377" Canvas.Top="326">00</Label>
+                <Rectangle RadiusX="25" RadiusY="25" Fill="HotPink" Width="138" Height="114" Canvas.Left="646" Canvas.Top="10"></Rectangle>
+                <Rectangle RadiusX="25" RadiusY="25" Fill="Snow" Width="123" Height="45" Canvas.Left="654" Canvas.Top="19"></Rectangle>
+                <Rectangle RadiusX="25" RadiusY="25" Fill="Snow" Width="124" Height="45" Canvas.Left="654" Canvas.Top="69"></Rectangle>
+                <Label FontSize="25" Canvas.Left="715" Canvas.Top="19">18+</Label>
+                <Label FontSize="25" Canvas.Left="715" Canvas.Top="67">13+</Label>
+                <CheckBox Unchecked="uncheckedd" Checked="checkedd" x:Name="m18" Canvas.Left="683" Canvas.Top="29">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="2" ScaleY="2" />
+                    </CheckBox.LayoutTransform>
+                </CheckBox>
+                <CheckBox Unchecked="uncheckedd" Checked="checkedd" x:Name="m13" IsChecked="True" Canvas.Left="683" Canvas.Top="77">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="2" ScaleY="2" />
+                    </CheckBox.LayoutTransform>
+                </CheckBox>
 
-        <Rectangle RadiusX="25" RadiusY="25" Fill="HotPink" Width="138" Height="114" Canvas.Left="646" Canvas.Top="10"></Rectangle>
-        <Rectangle RadiusX="25" RadiusY="25" Fill="Snow" Width="123" Height="45" Canvas.Left="654" Canvas.Top="19"></Rectangle>
-        <Rectangle RadiusX="25" RadiusY="25" Fill="Snow" Width="124" Height="45" Canvas.Left="654" Canvas.Top="69"></Rectangle>
-        <Label FontSize="25" Canvas.Left="715" Canvas.Top="19">18+</Label>
-        <Label FontSize="25" Canvas.Left="715" Canvas.Top="67">13+</Label>
-        <CheckBox Unchecked="uncheckedd" Checked="checkedd" x:Name="m18" Canvas.Left="683" Canvas.Top="29">
-            <CheckBox.LayoutTransform>
-                <ScaleTransform ScaleX="2" ScaleY="2" />
-            </CheckBox.LayoutTransform>
-        </CheckBox>
-        <CheckBox Unchecked="uncheckedd" Checked="checkedd" x:Name="m13" IsChecked="True" Canvas.Left="683" Canvas.Top="77">
-            <CheckBox.LayoutTransform>
-                <ScaleTransform ScaleX="2" ScaleY="2" />
-            </CheckBox.LayoutTransform>
-        </CheckBox>
+                <Rectangle RadiusX="25" RadiusY="25" Fill="HotPink" Width="130" Height="91" Canvas.Left="10" Canvas.Top="10"></Rectangle>
+                <Rectangle RadiusX="25" RadiusY="25" Fill="Snow" Width="106" Height="80" Canvas.Left="21" Canvas.Top="14"></Rectangle>
+                <Button ToolTip="Play Text to Speech" Click="AudioPlayClick" BorderBrush="Snow" Background="Snow" Width="47" Height="54" Canvas.Left="45" Canvas.Top="14">
+                    <Image Source="/Images/audioicon.png"></Image>
+                </Button>
+                <CheckBox ToolTip="AutoPlay text-to-speech with every new truth/dare" Unchecked="uncheckedd" Checked="checkedd" x:Name="autoplay" IsChecked="False" Canvas.Left="30" Canvas.Top="68">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="1.3" ScaleY="1.3" />
+                    </CheckBox.LayoutTransform>
+                </CheckBox>
+                <Label FontSize="15" Canvas.Left="50" Canvas.Top="62">Auto-Play</Label>
 
-        <Rectangle RadiusX="25" RadiusY="25" Fill="HotPink" Width="130" Height="91" Canvas.Left="10" Canvas.Top="10"></Rectangle>
-        <Rectangle RadiusX="25" RadiusY="25" Fill="Snow" Width="106" Height="80" Canvas.Left="21" Canvas.Top="14"></Rectangle>
-        <Button Click="AudioPlayClick" BorderBrush="Snow" Background="Snow" Width="47" Height="54" Canvas.Left="45" Canvas.Top="14">
-            <Image Source="/Images/audioicon.png"></Image>
-        </Button>
-        <CheckBox Unchecked="uncheckedd" Checked="checkedd" x:Name="autoplay" IsChecked="False" Canvas.Left="30" Canvas.Top="68">
-            <CheckBox.LayoutTransform>
-                <ScaleTransform ScaleX="1.3" ScaleY="1.3" />
-            </CheckBox.LayoutTransform>
-        </CheckBox>
-        <Label FontSize="15" Canvas.Left="50" Canvas.Top="62">Auto-Play</Label>
+                <Rectangle RadiusX="10" RadiusY="10" Fill="SkyBlue" Width="30" Height="93" Canvas.Left="10" Canvas.Top="178"></Rectangle>
 
-        <Rectangle RadiusX="10" RadiusY="10" Fill="SkyBlue" Width="30" Height="93" Canvas.Left="10" Canvas.Top="178"></Rectangle>
+                <Button Click="DayMode" BorderBrush="SkyBlue" Background="SkyBlue" Canvas.Left="11" Canvas.Top="186">
+                    <Image Source="/Images/sunicon.png" Height="29" Width="25"></Image>
+                </Button>
+                <!--<Rectangle Width="20" Height="49" Fill="Snow" Canvas.Left="11" Canvas.Top="181"></Rectangle><!-->
+                <Button Click="NightMode" BorderBrush="SkyBlue" Background="SkyBlue" Canvas.Left="11" Canvas.Top="230">
+                    <Image Source="/Images/dark-mode.png" Height="29" Width="25"></Image>
+                </Button>
+                <Rectangle x:Name="snowOverlay" Opacity="0.28" RadiusX="10" RadiusY="10" Fill="Snow" Width="25" Height="37" Canvas.Left="13" Canvas.Top="183"></Rectangle>
 
-        <Button Click="DayMode" BorderBrush="SkyBlue" Background="SkyBlue" Canvas.Left="11" Canvas.Top="186">
-            <Image Source="/Images/sunicon.png" Height="29" Width="25"></Image>
-        </Button>
-        <!--<Rectangle Width="20" Height="49" Fill="Snow" Canvas.Left="11" Canvas.Top="181"></Rectangle><!-->
-        <Button Click="NightMode" BorderBrush="SkyBlue" Background="SkyBlue" Canvas.Left="11" Canvas.Top="230">
-            <Image Source="/Images/dark-mode.png" Height="29" Width="25"></Image>
-        </Button>
-        <Rectangle x:Name="snowOverlay" Opacity="0.28" RadiusX="10" RadiusY="10" Fill="Snow" Width="25" Height="37" Canvas.Left="13" Canvas.Top="183"></Rectangle>
-
-    </Canvas>
+            </Canvas>
+        </Viewbox>
+    </Border>
 </Window>
